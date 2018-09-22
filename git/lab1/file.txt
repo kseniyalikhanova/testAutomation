@@ -1,2 +1,3 @@
 Some text for example.
 Change in master.
+Change in develop.
