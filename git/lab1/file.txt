@@ -1,3 +1,4 @@
 Some text for example.
 Change in master.
 Change in develop.
+Line for cherry-pick.
