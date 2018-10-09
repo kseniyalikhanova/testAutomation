@@ -8,24 +8,30 @@ public class TestTriangleValidation {
     @Test
     public void isTrueExist(){
         Triangle triangle = new Triangle(3,4,5);
-        Assert.assertTrue(TriangleValidation(triangle));
+        Assert.assertTrue(TriangleValidation.isTriangle(triangle));
     }
 
     @Test
     public void isFalseExist(){
         Triangle triangle = new Triangle(3,1,5);
-        Assert.assertTrue(TriangleValidation(triangle));
+        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
     }
 
     @Test
     public void notEqualsZero(){
         Triangle triangle = new Triangle(0, 2, 5);
-        Assert.assertFalse(TriangleValidation(triangle));
+        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
     }
 
     @Test
     public void notEqualsNegative(){
         Triangle triangle = new Triangle(-1, 3, 1);
-        Assert.assertFalse(TriangleValidation(triangle));
+        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
+    }
+
+    @Test
+    public void isEmpty(){
+        Triangle triangle = null;
+        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
     }
 }
