@@ -2,36 +2,53 @@ package by.bsu.likhanova.triangle.validation;
 
 import by.bsu.likhanova.triangle.entity.Triangle;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestTriangleValidation {
-    @Test
-    public void isTrueExist(){
-        Triangle triangle = new Triangle(3,4,5);
-        Assert.assertTrue(TriangleValidation.isTriangle(triangle));
+
+    @DataProvider(name = "zeroSides")
+    public static Object[][] zeroSides() {
+        return new Object[][]{
+                {0, 4, 5},
+                {2, 0, 5},
+                {2, 4, 0},
+                {0, 0, 0}
+        };
+    }
+
+    @DataProvider(name = "negativeSides")
+    public static Object[][] negativeSides() {
+        return new Object[][]{
+                {-1, 3, 1},
+                {1, -3, 1},
+                {1, 3, -1},
+                {-1, -3, -1}
+        };
     }
 
     @Test
-    public void isFalseExist(){
-        Triangle triangle = new Triangle(3,1,5);
-        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
+    public void isTriangle() {
+        Assert.assertTrue(TriangleValidation.isTriangle(new Triangle(3, 4, 5)));
     }
 
     @Test
-    public void notEqualsZero(){
-        Triangle triangle = new Triangle(0, 2, 5);
-        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
+    public void isNotTriangle() {
+        Assert.assertFalse(TriangleValidation.isTriangle(new Triangle(3, 1, 5)));
+    }
+
+    @Test(dataProvider = "zeroSides")
+    public void isNotZeroSides(double a, double b, double c) {
+        Assert.assertFalse(TriangleValidation.isTriangle(new Triangle(a, b, c)));
+    }
+
+    @Test(dataProvider = "negativeSides")
+    public void isNotNegativeSides(double a, double b, double c) {
+        Assert.assertFalse(TriangleValidation.isTriangle(new Triangle(a, b, c)));
     }
 
     @Test
-    public void notEqualsNegative(){
-        Triangle triangle = new Triangle(-1, 3, 1);
-        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
-    }
-
-    @Test
-    public void isEmpty(){
-        Triangle triangle = null;
-        Assert.assertFalse(TriangleValidation.isTriangle(triangle));
+    public void isEmpty() {
+        Assert.assertFalse(TriangleValidation.isTriangle(null));
     }
 }
