@@ -27,14 +27,23 @@ public class TestTriangleValidation {
         };
     }
 
+    @DataProvider(name = "incorrectSides")
+    public static Object[][] incorrectSides() {
+        return new Object[][]{
+                {3, 1, 5},
+                {5, 3, 1},
+                {3, 5, 1},
+        };
+    }
+
     @Test
     public void isTriangle() {
         Assert.assertTrue(TriangleValidation.isTriangle(new Triangle(3, 4, 5)));
     }
 
-    @Test
-    public void isNotTriangle() {
-        Assert.assertFalse(TriangleValidation.isTriangle(new Triangle(3, 1, 5)));
+    @Test(dataProvider = "incorrectSides")
+    public void isNotTriangle(double a, double b, double c) {
+        Assert.assertFalse(TriangleValidation.isTriangle(new Triangle(a, b, c)));
     }
 
     @Test(dataProvider = "zeroSides")
