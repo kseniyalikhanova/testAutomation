@@ -2,3 +2,4 @@ Some text for example.
 Change in master.
 Change in develop.
 line for cherry-pick.
+line for revert.
