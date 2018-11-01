@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CheckAvailableDatesTest {
+public class MainPageTest {
 
    @BeforeMethod
    public void openWebPage(){
@@ -15,18 +15,9 @@ public class CheckAvailableDatesTest {
    }
 
     @Test
-    public void checkAvalabilityOfDates() {
+    public void testCheckAvailabilityOfDates() {
         MainPage mainPage = new MainPage();
-        mainPage.filFlyFromField();
-        mainPage.clickOnWarsawOptionButton();
-        mainPage.filFlyToField();
-        mainPage.clickOnTenerifeAllOptionButton();
-        mainPage.clickOnOneWayCheckBox();
-        mainPage.clickOnCalendarIcon();
-        for (int i = 0; i < 13; i++) {
-            mainPage.clickOnNextMonthButton();
-        }
-        Assert.assertTrue(mainPage.IsOnNextMonthButtonPresent());
+        Assert.assertTrue(mainPage.checkAvailabilityOfDates());
     }
 
     @AfterMethod

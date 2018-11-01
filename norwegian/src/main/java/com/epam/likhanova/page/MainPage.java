@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends Page {
 
+    private static final int AVAILABLE_MONTH_AMOUNT = 13;
+
     @FindBy(id = "airport-select-origin")
     private WebElement flyFromField;
 
@@ -29,36 +31,17 @@ public class MainPage extends Page {
     @FindBy(xpath = "//button[@disabled]/i[@class = \"glyphicon glyphicon-chevron-right\"]")
     private WebElement nextMonthButtonDisabled;
 
-    public void filFlyFromField() {
+    public boolean checkAvailabilityOfDates(){
         flyFromField.clear();
         flyFromField.sendKeys("Warsaw");
-    }
-
-    public void clickOnWarsawOptionButton(){
         warsawOptionButton.click();
-    }
-
-    public void filFlyToField() {
         flyToField.sendKeys("Tenerife");
-    }
-
-    public void clickOnTenerifeAllOptionButton(){
         tenerifeAllOptionButton.click();
-    }
-
-    public void clickOnOneWayCheckBox(){
         oneWayCheckBox.click();
-    }
-
-    public void clickOnCalendarIcon(){
         calendarIcon.click();
-    }
-
-    public void clickOnNextMonthButton(){
-        nextMonthButton.click();
-    }
-
-    public boolean IsOnNextMonthButtonPresent(){
-       return nextMonthButtonDisabled.isEnabled();
+        for (int i = 0; i < AVAILABLE_MONTH_AMOUNT; i++) {
+            nextMonthButton.click();
+        }
+        return nextMonthButtonDisabled.isEnabled();
     }
 }
