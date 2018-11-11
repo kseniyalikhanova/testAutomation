@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends Page {
 
     private static final int AVAILABLE_MONTH_AMOUNT = 13;
+    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 9;
 
     @FindBy(id = "airport-select-origin")
     private WebElement flyFromField;
@@ -31,17 +32,44 @@ public class MainPage extends Page {
     @FindBy(xpath = "//button[@disabled]/i[@class = \"glyphicon glyphicon-chevron-right\"]")
     private WebElement nextMonthButtonDisabled;
 
-    public boolean checkAvailabilityOfDates(){
+    //@FindBy(id = "datepicker-391-9601-6")
+    @FindBy(xpath = "//*[@id = \"outboundDate\"]//descendant::tr[1]//td[contains(@headers, \"6-day\")]")
+    private WebElement firstSunday;
+
+    @FindBy(xpath = "//input[@class =\"numberfield__input ng-valid ng-valid-min ng-valid-max ng-dirty ng-valid-number ng-touched ng-valid-server\"]")
+    private WebElement addAdult;
+
+    @FindBy(xpath = "//ul[@data-ng-if=\"vm.model.userSelection.isGroupBooking\"]")
+    private WebElement msgAboutGroupBooking;
+
+    public void chooseFlightDirection(){
         flyFromField.clear();
         flyFromField.sendKeys("Warsaw");
         warsawOptionButton.click();
         flyToField.sendKeys("Tenerife");
         tenerifeAllOptionButton.click();
         oneWayCheckBox.click();
+    }
+
+    public boolean checkAvailabilityOfMonth(){
         calendarIcon.click();
         for (int i = 0; i < AVAILABLE_MONTH_AMOUNT; i++) {
             nextMonthButton.click();
         }
         return nextMonthButtonDisabled.isEnabled();
+    }
+
+    public void chooseFlightData(){
+        calendarIcon.click();
+        nextMonthButton.click();
+        firstSunday.click();
+    }
+
+    public void chooseGroupBooking(){
+        addAdult.sendKeys("10");
+    }
+
+    public boolean isDisplayedMsgAboutGroupBooking(){
+        return msgAboutGroupBooking.isDisplayed();
     }
 }

@@ -6,7 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class DriverProvider {
 
     private static final String WEBDRIVER_CHROMEDRIVER = "webdriver.chrome.driver";
-    private static final String WEBDRIVER_CHROMEDRIVER_EXE_PATH = ".\\browserdriver\\chromedriver\\chromedriver.exe";
+    private static final String WEBDRIVER_CHROMEDRIVER_EXE_PATH =
+                                        "browserdriver/chromedriver/chromedriver.exe";
     private static WebDriver driver;
 
     private DriverProvider() {
