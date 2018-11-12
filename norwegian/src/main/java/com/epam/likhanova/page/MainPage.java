@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends Page {
 
     private static final int AVAILABLE_MONTH_AMOUNT = 13;
-    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 9;
+    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 10;
 
     @FindBy(id = "airport-select-origin")
     private WebElement flyFromField;
@@ -36,7 +36,7 @@ public class MainPage extends Page {
     @FindBy(xpath = "//*[@id = \"outboundDate\"]//descendant::tr[1]//td[contains(@headers, \"6-day\")]")
     private WebElement firstSunday;
 
-    @FindBy(xpath = "//input[@class =\"numberfield__input ng-valid ng-valid-min ng-valid-max ng-dirty ng-valid-number ng-touched ng-valid-server\"]")
+    @FindBy(id = "adultCount"   )
     private WebElement addAdult;
 
     @FindBy(xpath = "//ul[@data-ng-if=\"vm.model.userSelection.isGroupBooking\"]")
@@ -59,14 +59,14 @@ public class MainPage extends Page {
         return nextMonthButtonDisabled.isEnabled();
     }
 
-    public void chooseFlightData(){
+    public void chooseFlightData() {
         calendarIcon.click();
         nextMonthButton.click();
         firstSunday.click();
     }
 
     public void chooseGroupBooking(){
-        addAdult.sendKeys("10");
+        addAdult.sendKeys(new StringBuilder(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
     }
 
     public boolean isDisplayedMsgAboutGroupBooking(){
