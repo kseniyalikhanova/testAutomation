@@ -32,17 +32,17 @@ public class MainPage extends Page {
     @FindBy(xpath = "//button[@disabled]/i[@class = \"glyphicon glyphicon-chevron-right\"]")
     private WebElement nextMonthButtonDisabled;
 
-    //@FindBy(id = "datepicker-391-9601-6")
-    @FindBy(xpath = "//*[@id = \"outboundDate\"]//descendant::tr[1]//td[contains(@headers, \"6-day\")]")
+    @FindBy(xpath = "//*[@id = \"outboundDate\"]/descendant::tr[1]" +
+                    "/td[contains(@headers, \"6-day\")]")
     private WebElement firstSunday;
 
-    @FindBy(id = "adultCount"   )
+    @FindBy(id = "adultCount")
     private WebElement addAdult;
 
     @FindBy(xpath = "//ul[@data-ng-if=\"vm.model.userSelection.isGroupBooking\"]")
     private WebElement msgAboutGroupBooking;
 
-    public void chooseFlightDirection(){
+    public void chooseFlightDirection() {
         flyFromField.clear();
         flyFromField.sendKeys("Warsaw");
         warsawOptionButton.click();
@@ -51,7 +51,7 @@ public class MainPage extends Page {
         oneWayCheckBox.click();
     }
 
-    public boolean checkAvailabilityOfMonth(){
+    public boolean checkAvailabilityOfMonth() {
         calendarIcon.click();
         for (int i = 0; i < AVAILABLE_MONTH_AMOUNT; i++) {
             nextMonthButton.click();
@@ -65,11 +65,12 @@ public class MainPage extends Page {
         firstSunday.click();
     }
 
-    public void chooseGroupBooking(){
-        addAdult.sendKeys(new StringBuilder(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
+    public void chooseGroupBooking() {
+        addAdult.clear();
+        addAdult.sendKeys(String.valueOf(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
     }
 
-    public boolean isDisplayedMsgAboutGroupBooking(){
+    public boolean isDisplayedMsgAboutGroupBooking() {
         return msgAboutGroupBooking.isDisplayed();
     }
 }

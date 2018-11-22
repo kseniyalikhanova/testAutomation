@@ -16,7 +16,6 @@ public class MainPageSteps {
 
     public boolean isDisplayedMsgAboutGroupBooking() {
         mainPage.chooseFlightDirection();
-        mainPage.chooseFlightData();
         mainPage.chooseGroupBooking();
         return mainPage.isDisplayedMsgAboutGroupBooking();
     }
