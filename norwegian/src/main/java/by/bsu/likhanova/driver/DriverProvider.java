@@ -1,4 +1,4 @@
-package com.epam.likhanova.driver;
+package by.bsu.likhanova.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +7,7 @@ public class DriverProvider {
 
     private static final String WEBDRIVER_CHROMEDRIVER = "webdriver.chrome.driver";
     private static final String WEBDRIVER_CHROMEDRIVER_EXE_PATH =
-                                        "browserdriver/chromedriver/chromedriver.exe";
+                                            "src/main/resources/chromedriver.exe";
     private static WebDriver driver;
 
     private DriverProvider() {

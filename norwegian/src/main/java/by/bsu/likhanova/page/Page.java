@@ -1,6 +1,6 @@
-package com.epam.likhanova.page;
+package by.bsu.likhanova.page;
 
-import com.epam.likhanova.driver.DriverProvider;
+import by.bsu.likhanova.driver.DriverProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
