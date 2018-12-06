@@ -14,17 +14,17 @@ public class FarePageTest {
 
     @BeforeClass
     public void setUp() {
-       farePage = new FarePage();
+        farePage = new FarePage();
         homePageSteps = new HomePageStep();
     }
 
     @BeforeMethod
-    public void openWebPage(){
+    public void openWebPage() {
         DriverProvider.getDriver().get("https://www.norwegian.com/en/");
     }
 
     @AfterMethod
-    public void closeDriver(){
+    public void closeDriver() {
         DriverProvider.closeDriver();
     }
 

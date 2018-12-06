@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends Page {
 
     private static final int UNAVAILABLE_MONTH_AMOUNT = 13;
-    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 10;
 
     @FindBy(xpath = "//button[@aria-label=\"Close\"][@data-ng-click=\"acceptCookie()\"]")
     private WebElement cookieCloseButton;
@@ -40,7 +39,7 @@ public class HomePage extends Page {
     private WebElement firstSunday;
 
     @FindBy(id = "adultCount")
-    private WebElement addAdult;
+    private WebElement adultCount;
 
     @FindBy(xpath = "//ul[@data-ng-if=\"vm.model.userSelection.isGroupBooking\"]")
     private WebElement msgAboutGroupBooking;
@@ -56,6 +55,9 @@ public class HomePage extends Page {
 
     @FindBy(xpath = "//a[contains(text(), \"Flight status\")]")
     private WebElement flightStatus;
+
+    @FindBy(xpath = "//div[@id=\"profileHeaderBar\"]/a")
+    private WebElement signInLink;
 
     public void closeCookieButton() {
         cookieCloseButton.click();
@@ -84,15 +86,20 @@ public class HomePage extends Page {
         return nextMonthButtonDisabled.isEnabled();
     }
 
+    public boolean checkAvailableValueOfAdultsAmount(final String adultsAmount) {
+        selectAdultsAmount(adultsAmount);
+        return adultCount.getText().equals(adultsAmount);
+    }
+
     public void selectFirstSundayNextMonth() {
         calendarIcon.click();
         nextMonthButton.click();
         firstSunday.click();
     }
 
-    public void selectGroupBooking() {
-        addAdult.clear();
-        addAdult.sendKeys(String.valueOf(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
+    public void selectAdultsAmount(final String adultsAmount) {
+        adultCount.clear();
+        adultCount.sendKeys(adultsAmount);
     }
 
     public void goToSearch() {
@@ -113,5 +120,9 @@ public class HomePage extends Page {
 
     public void goToFlightStatus() {
         new Actions(driver).moveToElement(flightStatus).click(flightStatus).build().perform();
+    }
+
+    public void signIn() {
+        signInLink.click();
     }
 }

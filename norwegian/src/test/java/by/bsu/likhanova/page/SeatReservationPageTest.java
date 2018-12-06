@@ -29,12 +29,12 @@ public class SeatReservationPageTest {
     }
 
     @BeforeMethod
-    public void openWebPage(){
+    public void openWebPage() {
         DriverProvider.getDriver().get("https://www.norwegian.com/en/");
     }
 
     @AfterMethod
-    public void closeDriver(){
+    public void closeDriver() {
         DriverProvider.closeDriver();
     }
 

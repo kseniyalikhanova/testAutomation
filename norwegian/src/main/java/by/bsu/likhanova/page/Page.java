@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 public abstract class Page {
     WebDriver driver;
 
-    public Page(){
+    public Page() {
         driver = DriverProvider.getDriver();
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 }
