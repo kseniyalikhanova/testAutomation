@@ -28,7 +28,7 @@ public class DestinationsPage extends Page {
     @FindBy(xpath = "//div[@class=\"slider__slide\"]")
     private WebElement budgetSlider;
 
-    public void chooseAirport() {
+    public void selectAirport() {
         Actions actions = new Actions(driver);
         actions.moveToElement(flyFromField).click().perform();
         ((JavascriptExecutor) driver)
@@ -38,12 +38,12 @@ public class DestinationsPage extends Page {
         warsawOptionButton.click();
     }
 
-    public void chooseTransitOption() {
+    public void selectTransitOption() {
         transitOptions.click();
         directOnlyOptionButton.click();
     }
 
-    public void chooseBudgetEqualsFiftyEuro() {
+    public void selectBudgetEqualsFiftyEuro() {
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);",
                         budgetSlider, "style",
