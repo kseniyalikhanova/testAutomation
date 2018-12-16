@@ -4,9 +4,11 @@ package by.bsu.likhanova.step;
 import by.bsu.likhanova.page.HomePage;
 
 public class HomePageStep {
+
+    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 10;
     private HomePage mainPage;
 
-    public HomePageStep(){
+    public HomePageStep() {
         mainPage = new HomePage();
     }
 
@@ -16,7 +18,7 @@ public class HomePageStep {
         mainPage.selectFlightOneWay();
     }
 
-    public boolean checkUnavailabilityOfMonth(){
+    public boolean checkUnavailabilityOfMonth() {
         mainPage.closeCookieButton();
         selectFlightDirection();
         return mainPage.checkUnavailabilityOfMonth();
@@ -31,11 +33,12 @@ public class HomePageStep {
     public void beginGroupBooking() {
         beginBooking();
         mainPage.selectFirstSundayNextMonth();
-        mainPage.selectGroupBooking();
+        mainPage.selectAdultsAmount(String.valueOf(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
     }
 
-    public void fillFormAndGoToSelectFlight() {
+    public void fillFormAndGoToSelectFlight(final int adultsAmount) {
         beginBooking();
+        mainPage.selectAdultsAmount(String.valueOf(adultsAmount));
         mainPage.goToSearch();
     }
 
@@ -49,15 +52,23 @@ public class HomePageStep {
         return mainPage.isDisplayedMsgAboutGroupBooking();
     }
 
-    public void goToDestination() {
+    private void goToMenu() {
         mainPage.closeCookieButton();
         mainPage.goToMenu();
+    }
+
+    public void goToDestination() {
+        goToMenu();
         mainPage.goToDestinations();
     }
 
     public void goToFlightStatus() {
-        mainPage.closeCookieButton();
-        mainPage.goToMenu();
+        goToMenu();
         mainPage.goToFlightStatus();
+    }
+
+    public void signIn() {
+        mainPage.closeCookieButton();
+        mainPage.signIn();
     }
 }

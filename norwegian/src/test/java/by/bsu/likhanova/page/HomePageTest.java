@@ -11,20 +11,21 @@ import org.testng.annotations.Test;
 
 public class HomePageTest {
 
+    private HomePage homePage;
     private HomePageStep homePageSteps;
 
-    @BeforeClass
-    public void setUp() {
-        homePageSteps = new HomePageStep();
-    }
     @BeforeMethod
-    public void openWebPage(){
+    public void openWebPage() {
+        homePage = new HomePage();
+        homePageSteps = new HomePageStep();
         DriverProvider.getDriver().get("https://www.norwegian.com/en/");
     }
 
     @AfterMethod
-    public void closeDriver(){
+    public void closeDriver() {
         DriverProvider.closeDriver();
+        homePage = null;
+        homePageSteps = null;
     }
 
     @Test
@@ -35,5 +36,12 @@ public class HomePageTest {
     @Test
     public void testCheckChoicePossibilityOfGroupBooking() {
         Assert.assertTrue(homePageSteps.isDisplayedMsgAboutGroupBooking());
+    }
+
+    @Test
+    public void testCheckUnavailableValuesOfAdultsAmount() {
+        homePageSteps.beginBooking();
+        Assert.assertFalse(homePage.checkAvailableValueOfAdultsAmount("-1"));
+        Assert.assertFalse(homePage.checkAvailableValueOfAdultsAmount("11"));
     }
 }

@@ -1,6 +1,5 @@
 package by.bsu.likhanova.page;
 
-import by.bsu.likhanova.action.SecondaryAction;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,7 +46,16 @@ public class DestinationsPage extends Page {
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);",
                         budgetSlider, "style",
-                        SecondaryAction.changedPositionValueOfSlider(fiftyEuro, budgetSlider));
+                        changedPositionValueOfSlider());
+    }
 
+    private String changedPositionValueOfSlider() {
+        String positionOfFiftyEuro = fiftyEuro.getAttribute("style").split(" ")[1].split("[;]")[0];
+
+        StringBuilder positionOfBudgetSlider = new StringBuilder(budgetSlider.getAttribute("style"));
+        positionOfBudgetSlider.replace(positionOfBudgetSlider.indexOf("(") + 1,
+                positionOfBudgetSlider.lastIndexOf(")"),
+                positionOfFiftyEuro);
+        return positionOfBudgetSlider.toString();
     }
 }

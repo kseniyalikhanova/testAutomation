@@ -10,28 +10,28 @@ import org.testng.annotations.Test;
 
 public class SelectFlightPageTest {
 
-    private SelectFlightPage selectFlightPage;
     private HomePageStep homePageSteps;
+    private SelectFlightPage selectFlightPage;
 
     @BeforeClass
     public void setUp() {
-        selectFlightPage = new SelectFlightPage();
         homePageSteps = new HomePageStep();
+        selectFlightPage = new SelectFlightPage();
     }
 
     @BeforeMethod
-    public void openWebPage(){
+    public void openWebPage() {
         DriverProvider.getDriver().get("https://www.norwegian.com/en/");
+    }
+
+    @AfterMethod
+    public void closeDriver() {
+        DriverProvider.closeDriver();
     }
 
     @Test
     public void testCheckTermContentWhenGroupBooking() {
         homePageSteps.fillFormAndGoToSelectFlightForGroup();
         Assert.assertTrue(selectFlightPage.checkTermContentWhenGroupBooking());
-    }
-
-    @AfterMethod
-    public void closeDriver(){
-        DriverProvider.closeDriver();
     }
 }

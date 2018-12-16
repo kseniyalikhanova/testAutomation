@@ -36,7 +36,8 @@ public class PassengerPage extends Page {
     @FindBy(id = "ctl00_MainContent_ipcResMakePax_ipcContactInfo_txtEmailPrivate")
     private WebElement email;
 
-    @FindBy(id = "ctl00_MainContent_ipcResMakePax_ipcContinueButtonBar_lnkContinue")
+    @FindBy(xpath = "//a[@id=\"ctl00_MainContent_ipcResMakePax_ipcContinueButtonBar_lnkContinue\"]" +
+                        "[@class=\"button\"]")
     private WebElement continueReservationButton;
 
     public void fillMobileNumber(final String newMobileNumber) {

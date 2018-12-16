@@ -1,5 +1,6 @@
 package by.bsu.likhanova.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends Page {
 
     private static final int UNAVAILABLE_MONTH_AMOUNT = 13;
-    private static final int ADULTS_AMOUNT_FOR_GROUP_BOOKING = 10;
 
     @FindBy(xpath = "//button[@aria-label=\"Close\"][@data-ng-click=\"acceptCookie()\"]")
     private WebElement cookieCloseButton;
@@ -36,11 +36,13 @@ public class HomePage extends Page {
     @FindBy(xpath = "//button[@disabled]/i[@class = \"glyphicon glyphicon-chevron-right\"]")
     private WebElement nextMonthButtonDisabled;
 
-    @FindBy(xpath = "//tr[@ng-repeat=\"row in rows track by $index\"]/td[contains(@headers, \"-6-day\")]/button")
-    private WebElement firstSunday;
+    /*@FindBy(xpath = "//tr[@ng-repeat=\"row in rows track by $index\"]/td[contains(@headers, \"6-day\")]/button")
+    private WebElement firstSunday;*/
+    private By firstSunday = By.xpath("//td[@ng-repeat=\"dt in row track by dt.date\"]" +
+                                          "[contains(@headers, \"6-day\")]/button");
 
     @FindBy(id = "adultCount")
-    private WebElement addAdult;
+    private WebElement adultCount;
 
     @FindBy(xpath = "//ul[@data-ng-if=\"vm.model.userSelection.isGroupBooking\"]")
     private WebElement msgAboutGroupBooking;
@@ -56,6 +58,9 @@ public class HomePage extends Page {
 
     @FindBy(xpath = "//a[contains(text(), \"Flight status\")]")
     private WebElement flightStatus;
+
+    @FindBy(xpath = "//div[@id=\"profileHeaderBar\"]/a")
+    private WebElement signInLink;
 
     public void closeCookieButton() {
         cookieCloseButton.click();
@@ -84,15 +89,20 @@ public class HomePage extends Page {
         return nextMonthButtonDisabled.isEnabled();
     }
 
+    public boolean checkAvailableValueOfAdultsAmount(final String adultsAmount) {
+        selectAdultsAmount(adultsAmount);
+        return adultCount.getText().equals(adultsAmount);
+    }
+
     public void selectFirstSundayNextMonth() {
         calendarIcon.click();
         nextMonthButton.click();
-        firstSunday.click();
+        driver.findElements(firstSunday).get(0).click();
     }
 
-    public void selectGroupBooking() {
-        addAdult.clear();
-        addAdult.sendKeys(String.valueOf(ADULTS_AMOUNT_FOR_GROUP_BOOKING));
+    public void selectAdultsAmount(final String adultsAmount) {
+        adultCount.clear();
+        adultCount.sendKeys(adultsAmount);
     }
 
     public void goToSearch() {
@@ -113,5 +123,9 @@ public class HomePage extends Page {
 
     public void goToFlightStatus() {
         new Actions(driver).moveToElement(flightStatus).click(flightStatus).build().perform();
+    }
+
+    public void signIn() {
+        signInLink.click();
     }
 }
