@@ -22,12 +22,12 @@ public class GroupTravelInformationPageTest {
     }
 
     @BeforeMethod
-    public void openWebPage() {
+    public void openWebPage(){
         DriverProvider.getDriver().get("https://www.norwegian.com/en/");
     }
 
     @AfterMethod
-    public void closeDriver() {
+    public void closeDriver(){
         DriverProvider.closeDriver();
     }
 
@@ -37,10 +37,10 @@ public class GroupTravelInformationPageTest {
         selectFlightPage.goToGroupTravelInformation();
         Assert.assertTrue(
                 groupTravelInformationPageSteps.isDisplayedMsgAboutBlankFields(
-                        "Adventures", "Blabla",
-                        "Blablabla", "blablabla@mail.com", "295794285",
-                        "Abra", "", "16", "23456",
-                        "10"
-                ));
+                    "Adventures", "Blabla",
+                    "Blablabla", "blablabla@mail.com", "295794285",
+                    "Abra", "", "16", "23456",
+                    "10"
+        ));
     }
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LogInOrCreateNewProfilePage extends Page {
 
-    @FindBy(id = "ctl00_MainContent_ipcResMakeLogin_IpcResUnregisteredUserBox_btnContinue")
+    @FindBy(id="ctl00_MainContent_ipcResMakeLogin_IpcResUnregisteredUserBox_btnContinue")
     private WebElement continueUnregisteredButton;
 
     public void selectUnregistered() {

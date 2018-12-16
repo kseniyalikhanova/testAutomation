@@ -29,37 +29,37 @@ public class GroupTravelInformationPage extends Page {
     @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtPhoneNumber")
     private WebElement phoneNumber;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtCompanyName")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtCompanyName")
     private WebElement companyName;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtInvoiceAddress")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtInvoiceAddress")
     private WebElement invoiceAddress;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtZipCode")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtZipCode")
     private WebElement zipCode;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtPostalArea")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtPostalArea")
     private WebElement postalArea;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_ipcCountry")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_ipcCountry")
     private WebElement country;
 
     @FindBy(xpath = "//option[contains(text(), \"Belarus (EUR)\")]")
     private WebElement belarusOptionButton;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtNumberOfPax")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcGroupTravelInfo_txtNumberOfPax")
     private WebElement passengersAmountWithoutInfants;
 
     @FindBy(id = "checkboxConfirm")
     private WebElement checkboxConfirm;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcContinueButtonBar_lnkContinue")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcContinueButtonBar_lnkContinue")
     private WebElement sendRequestButton;
 
-    @FindBy(id = "ctl00_MainContent_ipcGroupTravelForm_ipcMessageBoard_lblHeader")
+    @FindBy(id="ctl00_MainContent_ipcGroupTravelForm_ipcMessageBoard_lblHeader")
     private WebElement msgAboutBlankFields;
 
-    @FindBy(xpath = "//div[@id=\"ctl00_MainContent_ipcGroupTravelForm_ipcMessageBoard_pnlMessageBox\"]" +
+    @FindBy(xpath="//div[@id=\"ctl00_MainContent_ipcGroupTravelForm_ipcMessageBoard_pnlMessageBox\"]" +
             "/li[@class=\"messageitem\"]")
     private WebElement blankInvoiceAddress;
 
