@@ -1,0 +1,51 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All" parallel="tests" thread-count="2">
+    <test name="DestinationPage">
+        <classes>
+            <class name="by.bsu.likhanova.page.DestinationPageTest"/>
+        </classes>
+    </test>
+
+    <test name="FarePage">
+        <classes>
+            <class name="by.bsu.likhanova.page.FarePageTest"/>
+        </classes>
+    </test>
+
+    <test name="FlightStatusPageTest">
+        <classes>
+            <class name="by.bsu.likhanova.page.FlightStatusPage"/>
+        </classes>
+    </test>
+
+    <test name="GroupTravelInformationPage">
+        <classes>
+            <class name="by.bsu.likhanova.page.GroupTravelInformationPageTest"/>
+        </classes>
+    </test>
+
+    <test name="HomePage">
+        <classes>
+            <class name="by.bsu.likhanova.page.HomePageTest"/>
+        </classes>
+    </test>
+
+    <test name="NewProfilePage">
+        <classes>
+            <class name="by.bsu.likhanova.page.NewProfilePageTest"/>
+        </classes>
+    </test>
+
+    <test name="SeatReservationPage">
+        <classes>
+            <class name="by.bsu.likhanova.page.SeatReservationPageTest"/>
+        </classes>
+    </test>
+
+    <test name="SelectFlightPage">
+        <classes>
+            <class name="by.bsu.likhanova.page.SelectFlightPageTest"/>
+        </classes>
+    </test>
+</suite>
